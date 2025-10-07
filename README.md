@@ -18,7 +18,9 @@ The total score determines the result:
 | Score | Classification | Result |
 ------------------------------------
 | 6 or higher | Likely Employed | Market snapshot |
+
 | 3–5 | Unclear / Mixed | Job listings |
+
 | 2 or lower | Likely Not Employed | Job listings |
 
 If the user is employed, the app shows average salary, salary range, remote percentage, and top skills for their field.  
