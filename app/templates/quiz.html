@@ -1,0 +1,113 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Employment Quiz</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <section class="card form-card">
+    <form method="POST" action="/result" class="form-grid">
+      <header class="page-header">Complete The Questions Below</header>
+
+      <div class="form-control">
+        <label for="major">What is your major?</label>
+        <select id="major" name="major">
+          <option value="computer science">Computer Science</option>
+          <option value="data science">Data Science</option>
+          <option value="information systems">Information Systems</option>
+          <option value="marketing">Marketing</option>
+          <option value="business">Business</option>
+          <option value="accounting">Accounting</option>
+          <option value="finance">Finance</option>
+          <option value="nursing">Nursing</option>
+          <option value="not listed" selected>Not Listed</option>
+        </select>
+      </div>
+
+      <div class="form-control">
+        <label for="alarm">Do you wake up with an alarm?</label>
+        <select id="alarm" name="alarm">
+          <option value="1">Yes, always</option>
+          <option value="0">Sometimes</option>
+          <option value="-1">Rarely/Never</option>
+        </select>
+      </div>
+
+      <div class="form-control">
+        <label for="meetings">How often do you have scheduled meetings?</label>
+        <select id="meetings" name="meetings">
+          <option value="1">Several per week (3+)</option>
+          <option value="0">Occasionally (1–2)</option>
+          <option value="-1">Never</option>
+        </select>
+      </div>
+
+      <div class="form-control">
+        <label for="weekenddiff">Do your weekdays feel different from the weekends?</label>
+        <select id="weekenddiff" name="weekenddiff">
+          <option value="1">Very different</option>
+          <option value="0">Somewhat different</option>
+          <option value="-1">Feel the same</option>
+        </select>
+      </div>
+
+      <div class="form-control">
+        <label for="fivepm">Does the time 5PM mean anything to you?</label>
+        <select id="fivepm" name="fivepm">
+          <option value="1">Yes</option>
+          <option value="0">Kind of</option>
+          <option value="-1">No</option>
+        </select>
+      </div>
+
+      <div class="form-control">
+        <label for="starttime">Do you usually start your day at the same time most mornings?</label>
+        <select id="starttime" name="starttime">
+          <option value="1">Same time daily</option>
+          <option value="0">Varies somewhat</option>
+          <option value="-1">Random/changes daily</option>
+        </select>
+      </div>
+
+      <div class="form-control">
+        <label for="emailvssocial">Do you check your email or social media more during the day?</label>
+        <select id="emailvssocial" name="emailvssocial">
+          <option value="1">Email apps more</option>
+          <option value="0">About equal</option>
+          <option value="-1">Social media more</option>
+        </select>
+      </div>
+
+      <div class="form-control">
+        <label for="pto">Do you know what PTO means without Googling it?</label>
+        <select id="pto" name="pto">
+          <option value="1">Yes</option>
+          <option value="-1">No / Not sure</option>
+        </select>
+      </div>
+
+      <div class="form-control">
+        <label for="timeoff">When was the last time you had to ask for a day off?</label>
+        <select id="timeoff" name="timeoff">
+          <option value="1">Recently (this month)</option>
+          <option value="0">In the past year</option>
+          <option value="-1">Never / N/A</option>
+        </select>
+      </div>
+
+      <div class="form-control">
+        <label for="notifs">Could you instantly recognize a Microsoft Teams notification sound?</label>
+        <select id="notifs" name="notifs">
+          <option value="1">Yes</option>
+          <option value="0">Maybe / Sort of</option>
+          <option value="-1">No</option>
+        </select>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn">Submit</button>
+      </div>
+    </form>
+  </section>
+</body>
+</html>

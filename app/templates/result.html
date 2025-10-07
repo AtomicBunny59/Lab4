@@ -1,0 +1,148 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  {% macro money(val) -%}
+    {% if val is number %}${{ "{:,.0f}".format(val) }}{% else %}—{% endif %}
+  {%- endmacro %}
+
+  <header class="page-header">
+    <h2>Major: <b>{{ major }}</b></h2>
+    {% if result is defined and score is defined %}
+      <div class="pill">{{ result }} — Score: {{ score }}</div>
+    {% endif %}
+  </header>
+
+  {% if snapshot %}
+    <section class="card">
+      <h3>Market Snapshot</h3>
+
+      <div class="snapshot-grid">
+        <div class="stat">
+          <div class="stat-label">Average salary</div>
+          <div class="stat-value">{{ money(snapshot.salary_avg) }}</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-label">Salary min</div>
+          <div class="stat-value">{{ money(snapshot.salary_min) }}</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-label">Salary max</div>
+          <div class="stat-value">{{ money(snapshot.salary_max) }}</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-label">Remote %</div>
+          <div class="stat-value">
+            {% if snapshot.remote_pct is not none %}{{ snapshot.remote_pct }}%{% else %}—{% endif %}
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-label">Sample size</div>
+          <div class="stat-value">{{ snapshot.total or "—" }}</div>
+        </div>
+      </div>
+
+      <div class="skills">
+        <div class="skills-label">Top skills</div>
+        <div class="skills-list">
+          {% if snapshot.top_skills %}
+            {% for s in snapshot.top_skills[:12] %}
+              <span class="skill-badge">{{ s }}</span>
+            {% endfor %}
+          {% else %}
+            <span class="muted">—</span>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
+  {% if jobs is not none %}
+    <section>
+      <h3>Job Listings</h3>
+
+      {% if jobs|length == 0 %}
+        <p class="muted">No jobs found.</p>
+      {% else %}
+        <div class="jobs-grid">
+          {% for j in jobs %}
+            {% set db = j.descriptionBreakdown or {} %}
+            {% set mnY = db.salaryRangeMinYearly %}
+            {% set mxY = db.salaryRangeMaxYearly %}
+            {% set mnH = db.salaryRangeMinHourly %}
+            {% set mxH = db.salaryRangeMaxHourly %}
+            {% set loc = j.locationAddress
+                        or (j.owner.locationAddress if j.owner and j.owner.locationAddress else "") %}
+            {% set model = j.type or (db.workModel if db and db.workModel else "N/A") %}
+            {% set company = (j.owner.companyName if j.owner and j.owner.companyName else "Unknown") %}
+
+            <article class="job-card">
+              <div class="job-title">
+                <a href="{{ j.url }}" target="_blank" rel="noopener">
+                  {{ j.title or "Untitled role" }}
+                </a>
+              </div>
+
+              <div class="kv">
+                <div class="row">
+                  <div class="dt">Company</div>
+                  <div class="dd">{{ company }}</div>
+                </div>
+
+                <div class="row">
+                  <div class="dt">Work Model</div>
+                  <div class="dd">{{ model }}</div>
+                </div>
+
+                <div class="row">
+                  <div class="dt">Location</div>
+                  <div class="dd">{{ loc or "—" }}</div>
+                </div>
+
+                <div class="row">
+                  <div class="dt">Salary</div>
+                  <div class="dd">
+                    {% if mnY or mxY %}
+                      {% if mnY %}${{ "{:,.0f}".format(mnY) }}{% endif %}
+                      {% if mnY and mxY %}–{{ "{:,.0f}".format(mxY) }}{% elif (not mnY) and mxY %}${{ "{:,.0f}".format(mxY) }}{% endif %}/yr
+                    {% elif mnH or mxH %}
+                      {% if mnH %}${{ "{:,.0f}".format(mnH) }}{% endif %}
+                      {% if mnH and mxH %}–{{ "{:,.0f}".format(mxH) }}{% elif (not mnH) and mxH %}${{ "{:,.0f}".format(mxH) }}{% endif %}/hr
+                    {% else %}
+                      —
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+
+              {% set kw_api = db.keywords if db and db.keywords else [] %}
+              {% set skill_reqs = db.skillRequirements if db and db.skillRequirements else [] %}
+              {% set skills_suggest = j.skills_suggest or [] %}
+              {% set chips = (kw_api + skill_reqs + skills_suggest)[:6] %}
+
+              {% if chips %}
+                <div class="chip-row">
+                  {% for c in chips %}
+                    <span class="chip">{{ c }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </article>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </section>
+  {% endif %}
+
+  <footer class="page-footer">
+    <a class="link" href="/">← Take quiz again</a>
+  </footer>
+</body>
+</html>

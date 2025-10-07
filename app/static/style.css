@@ -1,0 +1,236 @@
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.page-footer {
+  margin-top: 28px;
+}
+
+.pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #374151;
+  font-size: 0.9rem;
+  border: 1px solid #dbeafe;
+}
+
+.meta-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: #374151;
+  font-size: 0.85rem;
+  border: 1px solid #e5e7eb;
+}
+
+.chip-row {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip, .skill-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #ecfdf5;
+  border: 1px solid #d1fae5;
+  font-size: 0.8rem;
+  color: #065f46;
+}
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  margin-bottom: 16px;
+}
+
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 12px 0 4px;
+}
+
+.stat {
+  background: #f9fafb;
+  border: 1px solid #f3f4f6;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.skills {
+  margin-top: 12px;
+}
+
+.skills-label {
+  font-size: 0.9rem;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.job-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px 14px 14px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+
+.job-title {
+  margin-bottom: 6px;
+}
+
+.job-title a {
+  font-weight: 700;
+  color: #1f2937;
+  text-decoration: none;
+}
+
+.job-title a:hover {
+  text-decoration: underline;
+}
+
+.job-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.muted {
+  color: #6b7280;
+}
+
+.link {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.form-card {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px 18px;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-control label {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.form-control select {
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+  color: #111827;
+}
+
+.form-control select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+}
+
+.form-actions {
+  grid-column: 1 / -1;
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid #2563eb;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn:hover {
+  filter: brightness(0.95);
+}
+
+.kv {
+  margin-top: 10px;
+  display: grid;
+  gap: 8px;
+}
+
+.kv .row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 8px 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+.kv .dt {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.kv .dd {
+  font-size: 0.95rem;
+  color: #111827;
+  word-break: break-word;
+}
